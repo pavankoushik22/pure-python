@@ -9,7 +9,7 @@ class Stack:
         self.items.append(item)
 
     def pop(self):
-        return self.items.pop()
+        self.items.pop()
 
     def size(self):
         return len(self.items)
