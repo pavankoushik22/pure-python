@@ -26,6 +26,8 @@ class TwoStack:
             print(self.main[self.r])
             return self.main[self.r]
 
+# query should be of format pushing to first stack: 1 1 x , popping from first: 1 1
+
 stk = TwoStack()
 while True:
     temp = input('enter the query: ')
