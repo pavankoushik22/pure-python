@@ -4,20 +4,29 @@ from stacks.stack import Stack
 
 
 def infix_to_postfix(s):
-    operators = {'[': 0, '(': 0, '^': 3, '*': 2, '/': 2, '+': 1, '-': 1}
+    operators = {'+': 1, '-': 1, '*': 2, '/': 2, '^': 3}
+    ops = ['+', '-', '*', '/', '^', '(', ')']
     stk = Stack()
     if len(s) == 0:
         return True
     for i in s:
-        if i not in operators:
+        # if i is an operand
+        if i not in ops:
             print(i, end='')
-        elif i == ')' or i == ']':
-            while stk.peek() != '(' or stk.peek() != '[':
+        elif i == '(':
+            print('entered this too')
+            stk.push(i)
+        # pop until stack is empty or open parenthesis confronts
+        elif i == ')':
+            print('it entered this loop')
+            while not stk.is_empty() and stk.peek() != '(':
                 print(stk.peek(), end='')
                 stk.pop()
-            stk.pop()
+            if not stk.is_empty():
+                stk.pop()
+        # an operand occurs then search for precedence
         else:
-            while not stk.is_empty() and operators[i] <= operators[stk.peek()]:
+            while not stk.is_empty() and (stk.peek() == '(' or operators[i] <= operators[stk.peek()]):
                 print(stk.peek(), end='')
                 stk.pop()
             stk.push(i)
