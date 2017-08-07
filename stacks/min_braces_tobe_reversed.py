@@ -17,9 +17,4 @@ for i in x:
         r += 1
         stk1.push(r)
 
-if l == 0 and r != 0:
-    print(math.ceil(r/2))
-elif r == 0 and l != 0:
-    print(math.ceil(l/2))
-else:
-    print(math.ceil((r / 2)) + math.ceil(l / 2))
+print(math.ceil((r / 2)) + math.ceil(l / 2))
