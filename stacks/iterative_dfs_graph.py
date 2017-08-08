@@ -11,6 +11,7 @@ class Graph:
         self.adj = [[]] * data
 
     def add_branch(self, i, j):
+
         self.adj[i].append(j)
 
     def dfs(self, source):
