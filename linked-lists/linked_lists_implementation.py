@@ -37,6 +37,39 @@ class LinkedList:
             last = last.next
         last.next = new_node
 
+    def delete_node(self, key):
+        temp = self.head
+        if self.head.data == key:
+            self.head = temp.next
+            temp = None
+        while temp is not None:
+            if temp.data == key:
+                break
+            prev = temp
+            temp = temp.next
+        if temp is None:
+            return
+        prev.next = temp.next
+        temp = None
+    def delete_at(self, position):
+        if self.head is None:
+            return
+        temp = self.head
+        if position == 0:
+            self.head = temp.next
+            temp = None
+            return
+        for i in range(position-1):
+            temp = temp.next
+            if temp is None:
+                break
+        if temp.next is None:
+            return
+        temp.next = temp.next.next
+
+
+
+
 if __name__ == '__main__':
     llist = LinkedList()
     llist.head = Node(1)
@@ -47,4 +80,10 @@ if __name__ == '__main__':
     llist.append(4)
     llist.push(5)
     llist.insert_after(second, 7)
+    llist.print_list()
+    llist.delete_node(4)
+    print('------------')
+    llist.print_list()
+    llist.delete_at(1)
+    print('------------')
     llist.print_list()
