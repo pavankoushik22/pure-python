@@ -67,6 +67,21 @@ class LinkedList:
             return
         temp.next = temp.next.next
 
+    def get_count(self):
+        temp = self.head
+        count = 0
+        while(temp):
+            count += 1
+            temp = temp.next
+        return count
+
+    def get_rec_count(self, node):
+        if not node:
+            return 0
+        else:
+            return 1 + self.get_rec_count(node.next)
+
+
 
 
 
