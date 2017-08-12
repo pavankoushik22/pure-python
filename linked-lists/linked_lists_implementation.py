@@ -81,7 +81,20 @@ class LinkedList:
         else:
             return 1 + self.get_rec_count(node.next)
 
+    def search(self, data):
+        temp = self.head
+        while temp:
+            if temp.data == data:
+                return True
+            temp = temp.next
+        return False
 
+    def search_recursive(self, node, data):
+        if not node:
+            return False
+        if node.data == data:
+            return True
+        return self.search_recursive(node.next, data)
 
 
 
