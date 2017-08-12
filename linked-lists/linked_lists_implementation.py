@@ -14,11 +14,13 @@ class LinkedList:
             print(temp.data)
             temp = temp.next
     # inserting at the starting of the linked list
+
     def push(self, new_data):
         new_node = Node(new_data)
         new_node.next = self.head
         self.head = new_node
     # inserting after a given node
+
     def insert_after(self, prev_node, new_data):
         if prev_node is None:
             print('given node should be in the linked list')
@@ -27,6 +29,7 @@ class LinkedList:
         new_node.next = prev_node.next
         prev_node.next = new_node
     # adding node at the end of the linked list
+
     def append(self, new_data):
         new_node = Node(new_data)
         if self.head is None:
@@ -95,6 +98,28 @@ class LinkedList:
         if node.data == data:
             return True
         return self.search_recursive(node.next, data)
+
+    def swap(self, x, y):
+        if x == y:
+            return False
+        prevX = None
+        currX = self.head
+        while currX != None and currX.data != x:
+            prevX = currX
+            currX = currX.next
+        prevY = None
+        currY = self.head
+        while currY != None and currY.data != y:
+            prevY = currY
+            currY = currY.next
+        if prevX == None or prevY == None:
+            return False
+        prevX.next = currY
+        prevY.next = currX
+        temp2 = currX.next
+        currX.next = currY.next
+        currY.next = temp2
+
 
 
 
