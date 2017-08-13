@@ -133,6 +133,18 @@ class LinkedList:
         present.next = prev
         return True
 
+    def detect_cycle(self):
+        hare = self.head
+        tortoise = self.head
+        while hare:
+            tortoise = tortoise.next
+            temp = hare.next
+            hare = temp.next
+            if tortoise.data == hare.data:
+                print('cycle found!')
+                break
+        return True
+
 
 
 
@@ -143,10 +155,9 @@ if __name__ == '__main__':
     third = Node(3)
     llist.head.next = second
     second.next = third
-    llist.append(4)
-    llist.push(5)
+    four = Node(4)
+    third.next = four
+    four.next = second
 
-    llist.print_list()
     print('------------')
-    llist.reverse()
-    llist.print_list()
+    llist.detect_cycle()
