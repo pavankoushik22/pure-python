@@ -145,7 +145,19 @@ class LinkedList:
                 break
         return True
 
-
+def sorted_merge(a, b):
+    result = None
+    if a == None:
+        return b
+    elif b == None:
+        return a
+    if a.data <= b.data:
+        result = a
+        result.next = sorted_merge(a.next, b)
+    else:
+        result = b
+        result.next = sorted_merge(a, b.next)
+    return result
 
 
 if __name__ == '__main__':
@@ -157,7 +169,17 @@ if __name__ == '__main__':
     second.next = third
     four = Node(4)
     third.next = four
-    four.next = second
-
+    llist2 = LinkedList()
+    five = Node(5)
+    six = Node(6)
+    seven = Node(7)
+    llist2.head = five
+    five.next = six
+    six.next = seven
+    llist2.print_list()
+    llist.print_list()
     print('------------')
-    llist.detect_cycle()
+    r = sorted_merge(llist.head, llist2.head)
+    while r:
+        print(r.data)
+        r = r.next
