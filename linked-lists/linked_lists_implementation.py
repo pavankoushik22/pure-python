@@ -120,6 +120,19 @@ class LinkedList:
         currX.next = currY.next
         currY.next = temp2
 
+    def reverse(self):
+        prev = None
+        present = self.head
+        future = self.head.next
+        while future:
+            present.next = prev
+            prev = present
+            present = future
+            future = present.next
+        self.head = present
+        present.next = prev
+        return True
+
 
 
 
@@ -132,11 +145,8 @@ if __name__ == '__main__':
     second.next = third
     llist.append(4)
     llist.push(5)
-    llist.insert_after(second, 7)
+
     llist.print_list()
-    llist.delete_node(4)
     print('------------')
-    llist.print_list()
-    llist.delete_at(1)
-    print('------------')
+    llist.reverse()
     llist.print_list()
