@@ -13,12 +13,14 @@ class LinkedList:
         while temp:
             print(temp.data)
             temp = temp.next
+
     # inserting at the starting of the linked list
 
     def push(self, new_data):
         new_node = Node(new_data)
         new_node.next = self.head
         self.head = new_node
+
     # inserting after a given node
 
     def insert_after(self, prev_node, new_data):
@@ -28,6 +30,7 @@ class LinkedList:
         new_node = Node(new_data)
         new_node.next = prev_node.next
         prev_node.next = new_node
+
     # adding node at the end of the linked list
 
     def append(self, new_data):
@@ -54,6 +57,7 @@ class LinkedList:
             return
         prev.next = temp.next
         temp = None
+
     def delete_at(self, position):
         if self.head is None:
             return
@@ -62,7 +66,7 @@ class LinkedList:
             self.head = temp.next
             temp = None
             return
-        for i in range(position-1):
+        for i in range(position - 1):
             temp = temp.next
             if temp is None:
                 break
@@ -73,7 +77,7 @@ class LinkedList:
     def get_count(self):
         temp = self.head
         count = 0
-        while(temp):
+        while (temp):
             count += 1
             temp = temp.next
         return count
@@ -145,6 +149,7 @@ class LinkedList:
                 break
         return True
 
+
 def sorted_merge(a, b):
     result = None
     if a == None:
@@ -158,6 +163,17 @@ def sorted_merge(a, b):
         result = b
         result.next = sorted_merge(a, b.next)
     return result
+
+def delete_alt(node):
+    if node == None:
+        return True
+    rem = node.next
+    if rem == None:
+        return True
+    node.next = rem.next
+    print(node.data)
+    del rem
+    delete_alt(node.next)
 
 
 if __name__ == '__main__':
@@ -176,10 +192,7 @@ if __name__ == '__main__':
     llist2.head = five
     five.next = six
     six.next = seven
-    llist2.print_list()
+
     llist.print_list()
     print('------------')
-    r = sorted_merge(llist.head, llist2.head)
-    while r:
-        print(r.data)
-        r = r.next
+    delete_alt(llist.head)
