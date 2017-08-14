@@ -175,6 +175,15 @@ def delete_alt(node):
     del rem
     delete_alt(node.next)
 
+def alt_split(node, a, b):
+    temp = node
+    while temp:
+        a.append(temp.data)
+        b.append(temp.next.data)
+        if temp.next is None:
+            break
+        temp = temp.next.next
+    return True
 
 if __name__ == '__main__':
     llist = LinkedList()
@@ -195,4 +204,9 @@ if __name__ == '__main__':
 
     llist.print_list()
     print('------------')
-    delete_alt(llist.head)
+    aa = LinkedList()
+    bb = LinkedList()
+    alt_split(llist.head, aa, bb)
+    aa.print_list()
+    print('------------')
+    bb.print_list()
