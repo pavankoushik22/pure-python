@@ -185,6 +185,14 @@ def alt_split(node, a, b):
         temp = temp.next.next
     return True
 
+# recursive version( iterative also available but just for the sake of clean code)
+def identical(head1, head2):
+    if head1 == None and head2 == None:
+        return True
+    if head1 and head2:
+        return head1.data == head2.data and identical(head1.next, head2.next)
+    return False
+
 if __name__ == '__main__':
     llist = LinkedList()
     llist.head = Node(1)
